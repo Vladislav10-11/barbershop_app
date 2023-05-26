@@ -79,21 +79,24 @@ class HairdresserCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                Container(
-                  width: 100,
-                  height: 32,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Color(0xff464646), width: 1.2),
-                    borderRadius: BorderRadius.circular(16.0),
-                  ),
-                  child: Text(
-                    textAlign: TextAlign.center,
-                    'Book Now',
-                    style: TextStyle(
-                        color: Colors.white,
-                        height: 1.7,
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold),
+                InkWell(
+                  onTap: () => button(),
+                  child: Container(
+                    width: 100,
+                    height: 32,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Color(0xff464646), width: 1.2),
+                      borderRadius: BorderRadius.circular(16.0),
+                    ),
+                    child: Text(
+                      textAlign: TextAlign.center,
+                      'Book Now',
+                      style: TextStyle(
+                          color: Colors.white,
+                          height: 1.7,
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                 )
               ],

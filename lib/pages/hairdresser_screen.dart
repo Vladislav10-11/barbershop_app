@@ -1,7 +1,25 @@
 import 'package:barber_shop_app/components/hairdresser_card.dart';
+import 'package:barber_shop_app/pages/employer_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
+class Hairdresser {
+  final String name;
+  final String type;
+  final String price;
+  final String image;
+  final double rate;
+  final String text;
+
+  Hairdresser({
+    required this.image,
+    required this.name,
+    required this.type,
+    required this.price,
+    required this.rate,
+    required this.text,
+  });
+}
 
 class HairdresserScreen extends StatefulWidget {
   const HairdresserScreen({super.key});
@@ -11,38 +29,42 @@ class HairdresserScreen extends StatefulWidget {
 }
 
 class _HairdresserScreenState extends State<HairdresserScreen> {
-  final List<HairdresserCard> hairdressers = [
-    HairdresserCard(
+  final List<Hairdresser> hairdressers = [
+    Hairdresser(
+      image: 'assets/Anastasia.png',
       name: 'Anastasia',
       type: 'Top Master',
       price: '150 - 200',
+      rate: 5.0,
+      text:
+          'Hi! my name is Anastasia. I am a hairdresser, stylist and just a master of my craft. My thing is the creation of complex long-term styling. See you later!',
+    ),
+    Hairdresser(
       image: 'assets/Anastasia.png',
+      name: 'Anastasia',
+      type: 'Top Master',
+      price: '150 - 200',
       rate: 5.0,
-      button: () {},
+      text:
+          'Hi! my name is Anastasia. I am a hairdresser, stylist and just a master of my craft. My thing is the creation of complex long-term styling. See you later!',
     ),
-    HairdresserCard(
-      name: 'Marina',
+    Hairdresser(
+      image: 'assets/Anastasia.png',
+      name: 'Anastasia',
       type: 'Top Master',
       price: '150 - 200',
-      image: 'assets/Marina.png',
-      rate: 4.81,
-      button: () {},
-    ),
-    HairdresserCard(
-      name: 'Valeria',
-      type: 'Top Master',
-      price: '150 - 200',
-      image: 'assets/Valeria.png',
       rate: 5.0,
-      button: () {},
+      text:
+          'Hi! my name is Anastasia. I am a hairdresser, stylist and just a master of my craft. My thing is the creation of complex long-term styling. See you later!',
     ),
-    HairdresserCard(
-      name: 'Marina',
+    Hairdresser(
+      image: 'assets/Anastasia.png',
+      name: 'Anastasia',
       type: 'Top Master',
       price: '150 - 200',
-      image: 'assets/Marina.png',
-      rate: 4.81,
-      button: () {},
+      rate: 5.0,
+      text:
+          'Hi! my name is Anastasia. I am a hairdresser, stylist and just a master of my craft. My thing is the creation of complex long-term styling. See you later!',
     ),
   ];
   @override
@@ -68,20 +90,49 @@ class _HairdresserScreenState extends State<HairdresserScreen> {
             ),
             Expanded(
               child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                ),
-                itemCount: hairdressers.length,
-                itemBuilder: (context, index) {
-                  return HairdresserCard(
-                      name: hairdressers[index].name,
-                      type: hairdressers[index].type,
-                      price: hairdressers[index].price,
-                      image: hairdressers[index].image,
-                      rate: hairdressers[index].rate,
-                      button: () {});
-                },
-              ),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 1,
+                  ),
+                  itemCount: hairdressers.length,
+                  itemBuilder: (context, index) {
+                    return Card(
+                      child: Container(
+                        child: Column(
+                          children: [
+                            Image.asset(hairdressers[index].image),
+                            Text(
+                              hairdressers[index].name,
+                            ),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.star,
+                                  color: Colors.orange,
+                                  size: 17,
+                                ),
+                                Text(
+                                  hairdressers[index].rate.toString(),
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ],
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => EmployerScreen(
+                                        item: hairdressers[index]),
+                                  ),
+                                );
+                              },
+                              child: Icon(Icons.add),
+                            )
+                          ],
+                        ),
+                      ),
+                    );
+                  }),
             )
           ],
         ),

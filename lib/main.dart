@@ -1,4 +1,5 @@
 import 'package:barber_shop_app/components/hairdresser_card.dart';
+import 'package:barber_shop_app/pages/employer_screen.dart';
 import 'package:barber_shop_app/pages/hairdresser_screen.dart';
 import 'package:barber_shop_app/pages/main_screen.dart';
 import 'package:flutter/material.dart';
